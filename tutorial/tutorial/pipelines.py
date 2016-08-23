@@ -14,9 +14,11 @@ class Photo(Model):
     title = CharField()
     link = CharField()
     url = CharField()
+    data = DateTimeField()
     class Meta:
         database = db  # 要连接的数据库
         db_table = 'photo'  # 要映射的数据表,名称与原表一致
+
 
 class TutorialPipeline(object):
 
@@ -57,7 +59,7 @@ class TutorialPipeline(object):
         # cur.close()
         # con.close()
         #
-
+        item_data = item['data']
         item_title = item['title']
         item_link = item['link']
         item_url = item['url']
@@ -65,7 +67,7 @@ class TutorialPipeline(object):
         if Photo.select().where(Photo.link==item_link):
             pass
         else:
-            photo = Photo(title=item_title, link=item_link, url=item_url)
+            photo = Photo(title=item_title, link=item_link, url=item_url, data=item_data)
             photo.save()
 
 

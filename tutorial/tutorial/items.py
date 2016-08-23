@@ -14,4 +14,5 @@ class TutorialItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     url = scrapy.Field()
+    data = scrapy.Field()
 
