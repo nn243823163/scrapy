@@ -70,6 +70,4 @@ class TutorialPipeline(object):
             photo = Photo(title=item_title, link=item_link, url=item_url, data=item_data)
             photo.save()
 
-
-
         return item
